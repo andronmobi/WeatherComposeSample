@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
+    id 'dagger.hilt.android.plugin'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -35,5 +37,9 @@ dependencies {
 
     testImplementation dep_test.junit
 
+    kapt dep_injection.hiltCompiler
+
     implementation dep_androidx.core_ktx
+    implementation dep_injection.hiltAndroid
+    implementation dep_network.okhttp
 }
