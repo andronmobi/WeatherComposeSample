@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -15,8 +16,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherComposeSampleTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
+                Scaffold {
                     Greeting("Android")
                 }
             }
@@ -33,6 +33,8 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     WeatherComposeSampleTheme {
-        Greeting("Android")
+        Scaffold {
+            Greeting("Android")
+        }
     }
 }
