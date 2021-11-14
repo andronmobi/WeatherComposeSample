@@ -23,6 +23,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion kotlin_version
+    }
 }
 
 dependencies {
@@ -35,10 +50,15 @@ dependencies {
 
     kapt dep_injection.hiltCompiler
 
+    implementation dep_androidx.activityCompose
+    implementation dep_androidx.appcompat
+    implementation dep_androidx.composeUi
+    implementation dep_androidx.composeMaterial
+    implementation dep_androidx.composePreview
     implementation dep_androidx.core_ktx
+    implementation dep_androidx.lifecycleRuntimeKtx
     implementation dep_injection.hiltAndroid
-    implementation dep_json.gson
-    implementation dep_network.retrofit
+    implementation dep_ui.material
 
-    implementation project(path: ':libraries:network')
+    implementation project(path: ':app')
 }

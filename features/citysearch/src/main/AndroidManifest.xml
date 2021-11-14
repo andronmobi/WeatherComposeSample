@@ -3,6 +3,15 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="fr.dappli.weathercomposesample.features.citysearch">
 
+    <application>
+        <activity
+            android:name=".CitySearchActivity"
+            android:theme="@style/Theme.WeatherComposeSample.NoActionBar" />
+    </application>
+
+    <!-- Not dangerous permissions (do not require rights at runtime) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <dist:module
         dist:instant="false"
         dist:title="@string/title_citysearch">
@@ -11,4 +20,5 @@
         </dist:delivery>
         <dist:fusing dist:include="true" />
     </dist:module>
+
 </manifest>
