@@ -1,6 +1,7 @@
 package fr.dappli.weathercomposesample.features.citysearch.ui
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.requiredSizeIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
@@ -13,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import androidx.compose.ui.window.PopupProperties
 
@@ -27,16 +29,17 @@ fun CitySearchInput(
 
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth().onGloballyPositioned { coordinates ->
-            //This value is used to assign to the DropDown the same width
             textfieldSize.value = coordinates.size.toSize()
         },
+        maxLines = 1,
         value = city,
         onValueChange = { onInputChanged(it) },
         label = { Text("City") }
     )
     DropdownMenu(
         modifier = Modifier
-            .width(with(LocalDensity.current){textfieldSize.value.width.toDp()}),
+            .width(with(LocalDensity.current) { textfieldSize.value.width.toDp() })
+            .requiredSizeIn(maxHeight = 200.dp),
         expanded = suggestions.isNotEmpty(),
         onDismissRequest = {  },
         // This line here will accomplish what you want

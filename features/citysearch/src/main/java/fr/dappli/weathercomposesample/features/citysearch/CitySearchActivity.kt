@@ -20,20 +20,24 @@ class CitySearchActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherComposeSampleTheme {
-                val city = viewModel.city.value
-                CitySearchScaffold(city) { cityName ->
-                    viewModel.onCityInputChanged(cityName)
-                }
+                CitySearchScaffold(
+                    viewModel.city.value,
+                    viewModel.suggestions,
+                    ::onCityInputChanged
+                )
             }
         }
     }
 
+    private fun onCityInputChanged(cityName: String) {
+        viewModel.onCityInputChanged(cityName)
+    }
 }
 
 @Preview
 @Composable
 fun CitySearchPreview() {
     WeatherComposeSampleTheme {
-        CitySearchScaffold("Paris") {}
+        CitySearchScaffold("Paris", emptyList(), {})
     }
 }

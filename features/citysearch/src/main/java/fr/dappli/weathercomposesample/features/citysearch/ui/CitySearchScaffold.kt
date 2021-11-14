@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun CitySearchScaffold(
     city: String,
+    suggestions: List<String>,
     onCityNameChange: (String) -> Unit
 ) {
     Scaffold(
@@ -22,7 +23,7 @@ fun CitySearchScaffold(
                     .fillMaxWidth()
                     .padding(start = 16.dp, top = 32.dp, end = 16.dp)
             ) {
-                CitySearchInput(city, onCityNameChange, listOf("A", "B", "C"), {})
+                CitySearchInput(city, onCityNameChange, suggestions, {})
             }
         },
         bottomBar = {
