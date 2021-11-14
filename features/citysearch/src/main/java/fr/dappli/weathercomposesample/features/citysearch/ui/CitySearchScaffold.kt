@@ -22,7 +22,7 @@ fun CitySearchScaffold(
                     .fillMaxWidth()
                     .padding(start = 16.dp, top = 32.dp, end = 16.dp)
             ) {
-                CitySearchInput(city, onCityNameChange)
+                CitySearchInput(city, onCityNameChange, listOf("A", "B", "C"), {})
             }
         },
         bottomBar = {
