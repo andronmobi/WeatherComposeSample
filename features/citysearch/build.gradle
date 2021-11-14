@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+android {
+    compileSdk v_build.compileSdk
+
+    defaultConfig {
+        applicationId "fr.dappli.weathercomposesample.features.citysearch"
+        minSdk v_build.minSdk
+        targetSdk v_build.targetSdk
+        versionCode v_build.versionCode
+        versionName v_build.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    testImplementation dep_test.junit
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.annotation:annotation:1.3.0'
+
+    kapt dep_injection.hiltCompiler
+
+    implementation dep_androidx.core_ktx
+    implementation dep_injection.hiltAndroid
+    implementation dep_json.gson
+    implementation dep_network.retrofit
+
+    implementation project(path: ':libraries:network')
+}
