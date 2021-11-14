@@ -44,6 +44,7 @@ ext {
             material: "com.google.android.material:material:$v.material"
     ]
     dep_test = [
-            junit: "junit:junit:$v.junit"
+            junit: "junit:junit:$v.junit",
+            mockk: "io.mockk:mockk:1.12.0"
     ]
 }

@@ -1,6 +1,5 @@
 package fr.dappli.weathercomposesample.features.citysearch.vm
 
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +22,6 @@ class CitySearchViewModel @Inject constructor(
     val city = mutableStateOf("")
     val uiState = mutableStateOf<UiState>(UiState.Idle)
     val citiesFlow: Flow<List<String>> = userInputFlow
-        .debounce(DEBOUNCE_TIME_MS)
         .filter { query ->
             return@filter query.isNotEmpty()
         }
@@ -36,11 +34,11 @@ class CitySearchViewModel @Inject constructor(
                 uiState.value = UiState.Error
                 emptyList()
             }
-        }.flowOn(Dispatchers.IO)
+        }
         .map {
             citiesList = it
             it.map { city -> city.zipName }
-        }.flowOn(Dispatchers.Main)
+        }
 
     fun onCityInputChanged(cityName: String) {
         println("vm onCityInputChanged: $cityName")
