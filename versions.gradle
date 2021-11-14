@@ -43,6 +43,6 @@ ext {
             material: "com.google.android.material:material:$v.material"
     ]
     dep_test = [
-            junit: "junit:$v.junit"
+            junit: "junit:junit:$v.junit"
     ]
 }

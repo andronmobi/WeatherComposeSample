@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.library'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk v_build.compileSdk
+
+    defaultConfig {
+        minSdk v_build.minSdk
+        targetSdk v_build.targetSdk
+        versionCode v_build.versionCode
+        versionName v_build.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+}
+
+dependencies {
+
+    testImplementation dep_test.junit
+
+    kapt dep_injection.hiltCompiler
+
+    implementation dep_androidx.core_ktx
+    implementation dep_injection.hiltAndroid
+
+    implementation project(path: ':libraries:network')
+}
