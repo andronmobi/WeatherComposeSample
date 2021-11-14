@@ -1,5 +1,6 @@
 package fr.dappli.weathercomposesample.features.citysearch.vm
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,13 +15,17 @@ class CitySearchViewModel @Inject constructor(
     private val getCitiesUseCase: GetCitiesUseCase
 ): ViewModel() {
 
-    fun onCityInputTextChanged(cityName: String) {
+    val city = mutableStateOf("")
+
+    fun onCityInputChanged(cityName: String) {
+        println("vm onCityInputChanged: $cityName")
+        city.value = cityName
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val result = getCitiesUseCase.invoke(cityName)
-                println("andrei $result")
+                println("vm search result: $result")
             } catch (e: Exception) {
-
+                // TODO
             }
         }
     }

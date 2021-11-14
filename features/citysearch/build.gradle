@@ -66,4 +66,6 @@ dependencies {
 
     implementation project(path: ':libraries:design')
     implementation project(path: ':libraries:network')
+
+    debugImplementation dep_androidx.composeTooling
 }

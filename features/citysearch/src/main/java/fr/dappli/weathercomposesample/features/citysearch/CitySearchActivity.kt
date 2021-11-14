@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
+import fr.dappli.weathercomposesample.features.citysearch.ui.CitySearchScaffold
 import fr.dappli.weathercomposesample.features.citysearch.vm.CitySearchViewModel
 import fr.dappli.weathercomposesample.libraries.design.theme.WeatherComposeSampleTheme
 
@@ -20,15 +20,20 @@ class CitySearchActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherComposeSampleTheme {
-                Scaffold {
-                    Button(onClick = {
-                        viewModel.onCityInputTextChanged("paris")
-                    }) {
-                        Text("Test me")
-                    }
+                val city = viewModel.city.value
+                CitySearchScaffold(city) { cityName ->
+                    viewModel.onCityInputChanged(cityName)
                 }
             }
         }
     }
 
+}
+
+@Preview
+@Composable
+fun CitySearchPreview() {
+    WeatherComposeSampleTheme {
+        CitySearchScaffold("Paris") {}
+    }
 }
