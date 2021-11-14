@@ -41,5 +41,8 @@ dependencies {
 
     implementation dep_androidx.core_ktx
     implementation dep_injection.hiltAndroid
+    implementation dep_json.gson
     implementation dep_network.okhttp
+    implementation dep_network.retrofit
+    implementation dep_network.retrofitGson
 }

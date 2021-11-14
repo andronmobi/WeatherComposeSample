@@ -11,8 +11,10 @@ ext {
             androidx_lifecycle_runtime_ktx: "2.4.0",
             androidx_appcompat            : "1.3.1",
             androidx_core_ktx             : "1.7.0",
+            gson                          : "2.8.9",
             material                      : "1.4.0",
             okhttp                        : "4.9.2",
+            retrofit                      : "2.9.0",
             junit                         : "4.13.2"
     ]
     dep_androidx = [
@@ -29,8 +31,13 @@ ext {
             hiltAndroid : "com.google.dagger:hilt-android:$hilt_version",
             hiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version"
     ]
+    dep_json = [
+            gson: "com.google.code.gson:gson:$v.gson"
+    ]
     dep_network = [
-            okhttp: "com.squareup.okhttp3:okhttp:$v.okhttp"
+            okhttp      : "com.squareup.okhttp3:okhttp:$v.okhttp",
+            retrofit    : "com.squareup.retrofit2:retrofit:$v.retrofit",
+            retrofitGson: "com.squareup.retrofit2:converter-gson:$v.retrofit"
     ]
     dep_ui = [
             material: "com.google.android.material:material:$v.material"
