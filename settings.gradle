@@ -10,3 +10,4 @@ rootProject.name = "WeatherComposeSample"
 include ':app'
 include ':libraries:network'
 include ':repo:geogouv'
+include ':usecases:citysearch'
