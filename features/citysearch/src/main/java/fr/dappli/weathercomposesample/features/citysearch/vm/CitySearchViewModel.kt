@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import fr.dappli.weathercomposesample.features.citysearch.vo.UiState
 import fr.dappli.weathercomposesample.usecases.citysearch.GetCitiesUseCase
 import fr.dappli.weathercomposesample.usecases.citysearch.vo.City
 import kotlinx.coroutines.Dispatchers
@@ -18,10 +19,9 @@ class CitySearchViewModel @Inject constructor(
 
     private val userInputFlow = MutableStateFlow("")
     private var citiesList = emptyList<City>()
-    private val _events = MutableSharedFlow<Event>()
 
     val city = mutableStateOf("")
-    val events: SharedFlow<Event> = _events
+    val uiState = mutableStateOf<UiState>(UiState.Idle)
     val citiesFlow: Flow<List<String>> = userInputFlow
         .debounce(DEBOUNCE_TIME_MS)
         .filter { query ->
@@ -29,9 +29,11 @@ class CitySearchViewModel @Inject constructor(
         }
         .mapLatest {
             try {
-                getCitiesUseCase(it)
+                getCitiesUseCase(it).also {
+                    uiState.value = UiState.Idle
+                }
             } catch (ex: Exception) { // we should catch exceptions here, otherwise the coroutine will be stopped.
-                _events.emit(Event.Error(ex.message))
+                uiState.value = UiState.Error
                 emptyList()
             }
         }.flowOn(Dispatchers.IO)
@@ -46,10 +48,9 @@ class CitySearchViewModel @Inject constructor(
         userInputFlow.value = cityName
     }
 
-    sealed class Event {
-        class CitySelected(val cityName: String) : Event()
-        class NextButtonClicked(val cityName: String) : Event()
-        class Error(val errorName: String?) : Event()
+    private var k = 0
+    fun onTestMe() {
+        uiState.value = if (k++ % 2 == 0) UiState.Error else UiState.Idle
     }
 
     private companion object {
