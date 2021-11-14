@@ -29,7 +29,8 @@ ext {
     ]
     dep_injection = [
             hiltAndroid : "com.google.dagger:hilt-android:$hilt_version",
-            hiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version"
+            hiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version",
+            javaxInject : "javax.inject:javax.inject:1"
     ]
     dep_json = [
             gson: "com.google.code.gson:gson:$v.gson"
