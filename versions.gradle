@@ -9,7 +9,6 @@ ext {
     v = [
             androidx_activity_compose       : "1.4.0",
             androidx_lifecycle_runtime_ktx  : "2.4.0",
-            androidx_lifecycle_viewmodel_ktx: "2.4.0",
             androidx_appcompat              : "1.3.1",
             androidx_core_ktx               : "1.7.0",
             gson                            : "2.8.9",
@@ -26,7 +25,6 @@ ext {
             composePreview       : "androidx.compose.ui:ui-tooling-preview:$compose_version",
             composeTooling       : "androidx.compose.ui:ui-tooling:$compose_version",
             core_ktx             : "androidx.core:core-ktx:$v.androidx_core_ktx",
-            lifecycleViewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$v.androidx_lifecycle_viewmodel_ktx",
             lifecycleRuntimeKtx  : "androidx.lifecycle:lifecycle-runtime-ktx:$v.androidx_lifecycle_runtime_ktx",
     ]
     dep_injection = [
