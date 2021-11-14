@@ -70,8 +70,16 @@ dependencies {
     implementation dep_injection.hiltAndroid
     implementation dep_ui.material
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    implementation dep_json.gson
+    implementation dep_network.okhttp
+    implementation dep_network.retrofit
+    implementation dep_network.retrofitGson
 
     implementation project(path: ':features:citysearch')
+
+    implementation project(path: ':usecases:citysearch')
+
+    implementation project(path: ':repo:geogouv')
 
     implementation project(path: ':libraries:design')
     implementation project(path: ':libraries:navigation')
