@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dagger.hilt.android.AndroidEntryPoint
 import fr.dappli.weathercomposesample.libraries.navigation.CitySearchNavigator
-import fr.dappli.weathercomposesample.ui.theme.WeatherComposeSampleTheme
+import fr.dappli.weathercomposesample.libraries.design.theme.WeatherComposeSampleTheme
 import javax.inject.Inject
 
 @AndroidEntryPoint

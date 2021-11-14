@@ -1,4 +1,4 @@
-package fr.dappli.weathercomposesample.ui.theme
+package fr.dappli.weathercomposesample.libraries.design.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
