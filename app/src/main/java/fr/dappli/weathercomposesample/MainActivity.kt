@@ -1,6 +1,5 @@
 package fr.dappli.weathercomposesample
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,9 +12,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dagger.hilt.android.AndroidEntryPoint
+import fr.dappli.weathercomposesample.libraries.navigation.CitySearchNavigator
 import fr.dappli.weathercomposesample.ui.theme.WeatherComposeSampleTheme
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var citySearchNavigator: CitySearchNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,13 +48,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun onSearchClicked() {
-        val intent = Intent().apply {
-            setClassName(
-                packageName,
-                "fr.dappli.weathercomposesample.features.citysearch.CitySearchActivity"
-            )
-        }
-        startActivity(intent)
+        startActivity(citySearchNavigator.newIntent())
     }
 }
 

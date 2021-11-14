@@ -1,4 +1,4 @@
-package fr.dappli.weathercomposesample.features.citysearch
+package fr.dappli.navigation
 
 import org.junit.Test
 

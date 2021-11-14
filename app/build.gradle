@@ -70,6 +70,7 @@ dependencies {
     implementation dep_injection.hiltAndroid
     implementation dep_ui.material
 
+    implementation project(path: ':libraries:navigation')
     implementation project(path: ':libraries:network')
 
     debugImplementation dep_androidx.composeTooling
